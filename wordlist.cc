@@ -20,16 +20,19 @@ int main() {
     cout << "\n";
 
     // the diff of capture caluse and parameter in lambda expression 
+    /*
+        capture clause is for lambda to capture the value provide outside the transform
+        parameter is the data provided by transform list
+    */
     std::transform(words.begin(), words.end(), ostream_iterator<string>{cout, "\n"},
-    [&text](string const& words)
+    [&text](string const& word)
     {
-        int n = count(text.begin(), text.end(), words ) ;
-        return words + ": " + to_string(n);
-        //return team_to_string(a) + " | " + b.first;
+        int n = count(text.begin(), text.end(), word ) ;
+        return word + ": " + to_string(n);
     }
     );
 
-    /*
+    /* transform (1)
     template<class InputIt, class OutputIt, class UnaryOperation>
     OutputIt transform(InputIt first1, InputIt last1,
                     OutputIt d_first, UnaryOperation unary_op)
@@ -40,7 +43,7 @@ int main() {
         return d_first;
     }
     */
-    /*
+    /* transfrom (2)
     template<class InputIt1, class InputIt2, class OutputIt, class BinaryOperation>
     OutputIt transform(InputIt1 first1, InputIt1 last1,
                     InputIt2 first2, OutputIt d_first,

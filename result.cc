@@ -40,13 +40,13 @@ int main()
     auto print = [](std::pair<string, int> const& pair){ std::cout << pair.second << ' '; };
     auto compareSecondValue = [](pair<string, int> const& lhs, pair<string, int> const& rhs){ return lhs.second > rhs.second; };
 
-    std::for_each(results.begin(), results.end(), print);
+    std::for_each(results.begin(), results.end(), print); // 12 5 0 37
     std::cout << '\n';
-    // why cant use std::sort?
-    //std::sort(results.begin(), results.end(), compareSecondValue);
+
     std::partial_sort_copy(results.begin(), results.end(), highscore.begin(), highscore.end(), compareSecondValue); // sorted results will write into highscore;
-    std::for_each(highscore.begin(), highscore.end(), print);
+    std::for_each(highscore.begin(), highscore.end(), print); // 37 12 5
     std::cout << '\n';
+
     std::cout << std::left << std::setw(14) << "Highscore"  << " | " << setw(14) << "Fastest" << std:: endl;
 
     // what transform for?
